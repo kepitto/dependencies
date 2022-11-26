@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+  app:
+     image: kepitto/performancetracker:latest
+     ports:
+      - "8080:8080"
+     depends_on:
+      - postgres
