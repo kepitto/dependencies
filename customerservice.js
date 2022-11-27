@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const port = 8080;
 
+const startServer = () => {
+
 const client = new Client({
   password: "root",
   user: "root",
@@ -126,7 +128,6 @@ app.get("/getCustomerData", async (req, res) => {
      throw new Error("Query failed");
     });
   }
-  console.log(results);
   res.setHeader("Content-Type", "application/json"); 
   res.status(200);
   res.send(JSON.stringify(results));
@@ -147,3 +148,10 @@ app.get("/getCustomerData", async (req, res) => {
     console.log(`Example app listening at http://localhost:${port}`);
   });
 })();
+}
+
+startServer()
+
+module.exports = {
+  startServer
+}

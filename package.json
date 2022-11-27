@@ -1,9 +1,14 @@
 {
   "dependencies": {
+    "@pact-foundation/pact": "^10.2.2",
+    "axios": "^1.2.0",
+    "chai": "^4.3.7",
     "express": "^4.18.2",
+    "mocha": "^10.1.0",
     "pg": "^8.8.0"
   },
   "scripts": {
-    "start": "node customerservice.js"
+    "start": "node customerservice.js",
+    "test": "mocha ./test/consumer1* && mocha ./test/consumer2*"
   }
 }

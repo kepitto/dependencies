@@ -16,3 +16,7 @@ const printCustomers = async () => {
 }
 
 printCustomers()
+
+module.exports = {
+	getData
+}
