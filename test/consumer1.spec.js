@@ -1,14 +1,16 @@
 const assert = require('assert')
 const { Pact, Matchers } = require('@pact-foundation/pact')
 const { getData } = require('../consumer1')
+const { afterEach } = require('mocha')
 const { eachLike } = Matchers
+const path = require('path')
 
 describe('Pact with Customer API', () => {
   const provider = new Pact({
     port: 8080,
-    consumer: 'OrderClient',
-    provider: 'OrderApi',
-    dir: 'pacts'
+    consumer: 'Consumer1',
+    provider: 'CustomerAPI',
+    dir: path.resolve(process.cwd(), "pacts")
   })
 
   before(() => provider.setup())
@@ -26,15 +28,10 @@ describe('Pact with Customer API', () => {
         },
         willRespondWith: {
           body: eachLike({
-            items: eachLike({
               id: 1,
               name: 'Hakan',
-              address: 'Adresse',
-              birthdate: 'xx-xx-xxxx',
               email: 'Email-Adresse',
-              status: 'Status',
-              products: [ [Object], [Object] ]
-                }),
+              status: 'Status'
             }),
             status: 200,
         },
@@ -45,5 +42,7 @@ describe('Pact with Customer API', () => {
       const result = await getData()
       assert.ok(result.length) 
     })
+    afterEach(() => provider.verify());
+    after(() => provider.finalize());
   })
 })

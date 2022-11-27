@@ -11,7 +11,7 @@ const printCustomers = async () => {
         for (let j = 0; j < data[i].products.length; j++) {
             aggregatedBalance += data[i].products[j].balance;
         }
-        console.log(data[i].name, data[i].email, aggregatedBalance)
+        console.log(data[i].name, aggregatedBalance)
     }
 }
 

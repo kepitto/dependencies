@@ -1,0 +1,58 @@
+{
+  "consumer": {
+    "name": "Consumer2"
+  },
+  "interactions": [
+    {
+      "description": "a request for customer",
+      "providerState": "there are customer",
+      "request": {
+        "method": "GET",
+        "path": "/getCustomerData"
+      },
+      "response": {
+        "body": [
+          {
+            "id": 1,
+            "name": "Hakan",
+            "products": [
+              {
+                "balance": 700,
+                "name": "Staubsauger"
+              },
+              {
+                "balance": 700,
+                "name": "Staubsauger"
+              }
+            ]
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type",
+            "min": 1
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "10.2.2"
+    },
+    "pactRust": {
+      "ffi": "0.3.14",
+      "models": "1.0.0"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "CustomerAPI"
+  }
+}

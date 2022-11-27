@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node customerservice.js",
-    "test": "mocha ./test/consumer1* && mocha ./test/consumer2*"
+    "test:consumer": "mocha ./test/consumer1* && mocha ./test/consumer2*",
+    "test:service": "mocha verify-service.js"
   }
 }
