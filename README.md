@@ -22,8 +22,8 @@ A pact file is then created which describes the interaction between both partici
 The created pact files are used to verify if the service complies with the expected response.
 (npm run test:service)
 
-Running the example:
+**Running the example:**  
 The dockerimage isnt pushed to dockerhub, but only built locally
 
-docker build . --file Dockerfile --tag kepitto/dependencies   
-docker-compose up
+_docker build . --file Dockerfile --tag kepitto/dependencies_  
+_docker-compose up_
